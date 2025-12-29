@@ -7,7 +7,6 @@ try:
     from dotenv import load_dotenv
     os.environ.pop('OPENAI_API_KEY', None)
     load_dotenv("./.env") 
-    print(os.getenv("OPENAI_API_KEY"))
 except ImportError:
     pass  
 

@@ -6,7 +6,7 @@ from langchain_core.documents import Document
 from pathlib import Path
 
 
-from langchain_community.document_loaders import PyMuPDFLoader , DirectoryLoader, CSVLoader, TextLoader
+from langchain_community.document_loaders import PyMuPDFLoader , DirectoryLoader, CSVLoader, TextLoader, JSONLoader
 
 from embedding import embedding_manager
 
@@ -30,8 +30,9 @@ def process_all_documents(directory_path):
     pdf_files = list(folder_path.glob("**/*.pdf"))
     csv_files = list(folder_path.glob("**/*.csv"))
     txt_files = list(folder_path.glob("**/*.txt"))
+    json_files = list(folder_path.glob("**/*.json"))
     
-    files = pdf_files + csv_files + txt_files
+    files = pdf_files + csv_files + txt_files + json_files
     
     
     
@@ -43,6 +44,8 @@ def process_all_documents(directory_path):
                 loader = CSVLoader(file_path=str(file))
             elif file.suffix == ".txt":
                 loader = TextLoader(file_path=str(file))
+            elif file.suffix == ".json":
+                loader = JSONLoader(file_path=str(file), jq_schema=".")  
             else:
                 continue
             
