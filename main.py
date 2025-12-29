@@ -1,0 +1,114 @@
+import os
+
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from langchain_core.documents import Document
+from pathlib import Path
+
+
+from langchain_community.document_loaders import PyMuPDFLoader , DirectoryLoader, CSVLoader, TextLoader
+
+from embedding import embedding_manager
+
+from vectorStore import vectorStore
+
+from llm_integration import rag_llm
+from retriever import rag_retriever
+
+
+# Load all PDF files from the specified directory and its subdirectories
+
+
+def process_all_documents(directory_path):
+    all_documents = []
+    folder_path = Path(directory_path)
+    
+    pdf_files = list(folder_path.glob("**/*.pdf"))
+    csv_files = list(folder_path.glob("**/*.csv"))
+    txt_files = list(folder_path.glob("**/*.txt"))
+    
+    files = pdf_files + csv_files + txt_files
+    
+    
+    
+    for file in files:
+        try:
+            if file.suffix == ".pdf":
+                loader = PyMuPDFLoader(str(file))
+            elif file.suffix == ".csv":
+                loader = CSVLoader(file_path=str(file))
+            elif file.suffix == ".txt":
+                loader = TextLoader(file_path=str(file))
+            else:
+                continue
+            
+            documents = loader.load()
+
+            
+            
+            for doc in documents:
+                doc.metadata["source_file"] = str(file)
+                doc.metadata["file_type"] = file.suffix
+
+                
+            all_documents.extend(documents)
+            
+        except Exception as e :
+            print(f"Error loading {file}: {e}")
+    return all_documents
+    
+def split_documents_into_chunks(documents, chunk_size=1000, chunk_overlap=200):
+
+
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        separators=["\n\n", "\n", " ", ""]
+    )
+    
+    split_documents = text_splitter.split_documents(documents)
+    print(f"Document : {len(documents)} are Split into {len(split_documents)} chunks.")
+    
+    
+    
+    
+    return split_documents
+
+def main():
+    
+    all_documents = process_all_documents("./data")
+
+    
+    chunks = split_documents_into_chunks(all_documents)
+    
+    texts  = [doc.page_content for doc in chunks]
+    
+    
+    embeddings = embedding_manager.generate_embeddings(texts)
+    
+  
+    
+    vectorStore.add_documents(chunks, embeddings)
+    
+    question = input("Enter your question: ")
+    
+    while question != "DONE":
+        answer = rag_llm(question, rag_retriever, top_k=3)
+        print(answer)
+        question = input("Enter your question: ")
+        
+ 
+    
+
+ 
+    
+    
+    
+    
+
+
+
+
+
+if __name__ == "__main__":
+    main()
