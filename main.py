@@ -15,6 +15,10 @@ from vectorStore import vectorStore
 from llm_integration import rag_llm
 from retriever import rag_retriever
 
+from fastapi import FastAPI, HTTPException, Body
+from contextlib import asynccontextmanager 
+
+
 
 # Load all PDF files from the specified directory and its subdirectories
 
@@ -69,46 +73,41 @@ def split_documents_into_chunks(documents, chunk_size=1000, chunk_overlap=200):
     split_documents = text_splitter.split_documents(documents)
     print(f"Document : {len(documents)} are Split into {len(split_documents)} chunks.")
     
-    
-    
-    
     return split_documents
 
-def main():
+@asynccontextmanager 
+async def lifespan(app: FastAPI):
     
     all_documents = process_all_documents("./data")
-
-    
     chunks = split_documents_into_chunks(all_documents)
-    
     texts  = [doc.page_content for doc in chunks]
-    
-    
     embeddings = embedding_manager.generate_embeddings(texts)
     
-  
-    
     vectorStore.add_documents(chunks, embeddings)
+    yield
     
-    question = input("Enter your question: ")
+    # question = input("Enter your question: ")
     
-    while question != "DONE":
+    # while question != "DONE":
+    #     answer = rag_llm(question, rag_retriever, top_k=3)
+    #     print(answer)
+    #     question = input("Enter your question: ")
+
+app = FastAPI(title="RAG API", lifespan=lifespan)
+
+
+@app.post("/ask")
+async def ask_question(question: str = Body(..., embed=True)):
+    try:
         answer = rag_llm(question, rag_retriever, top_k=3)
-        print(answer)
-        question = input("Enter your question: ")
-        
- 
+        return {"question": question, "answer": answer}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     
-
- 
-    
-    
-    
-    
-
-
-
-
+@app.get("/")
+async def root():
+    return {"message": "RAG API is running. Use POST /ask to ask questions."}
 
 if __name__ == "__main__":
-    main()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

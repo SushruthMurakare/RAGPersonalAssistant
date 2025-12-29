@@ -8,3 +8,6 @@ faiss-cpu
 chromadb
 python-dotenv
 openai
+fastapi
+pydantic 
+typing 
