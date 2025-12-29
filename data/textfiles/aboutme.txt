@@ -1,0 +1,12 @@
+#OpentoWork
+I’m a Software Engineer who loves building clean, fast, and user-friendly web and mobile applications. I’ve worked across frontend, backend, and full-stack development, and enjoy improving both performance and user experience. 
+
+Most recently, I worked as a Frontend Software Engineer Intern at Zinnia (Boulder, CO), where I developed a new section called “Usage” in the app. I was the sole frontend representative in meetings with the product manager, backend, and UX team, gathering requirements, assessing feasibility, estimating timelines, and coordinating implementation details. I also led a team of interns to design an on-time delivery metrics system, managing requirements, creating JIRA tasks, and ensuring timely delivery. This experience strengthened my skills as both a developer and a leader. Take a look at my accomplishments at this role and comments from my teammates using this link - https://docs.google.com/document/d/1BMIozehPXhRWKFtqaDG2-YaOyRSYhkYGnkzihC0ZgEE/edit?tab=t.0
+
+Before that, I worked as a Graduate Scientific Programmer at the Payne Institute, where I was the sole developer responsible for designing, developing, testing, and deploying a full-stack application. I built map layers using geospatial data fetched from a PostgreSQL database, improved the UI for a better user experience and the code for enhanced performance, and integrated LangChain and Gemini to analyze satellite images.
+
+Earlier, I worked at Tecnotree for over two years, where I started as an intern and grew into a Senior Developer. I developed key features for telecom web and mobile apps, implemented GraphQL APIs, added automation testing, and helped improve navigation and usability for users across several countries.
+
+I also worked with Credental, a Utah-based startup, where I owned the complete frontend using ReactJS and Typescript, integrated APIs, and designed and developed the UI for smoother collaboration between dentists and insurance providers.
+
+I enjoy working on React, Next, FastAPI, Flask, NodeJS, TypeScript, Docker, and AI-integrated applications, and I’m excited to keep building scalable, real-world solutions that make products faster, smarter, and easier to use. My goal is to keep growing as a Software Engineer who solves real world problems with software solutions.

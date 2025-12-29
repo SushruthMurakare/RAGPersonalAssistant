@@ -1,0 +1,44 @@
+ "projects": [
+    {
+      "id": "1",
+      "title": "Access control system with masked face recognition (Thesis Project)  ",
+      "description": "Developed an access control system using Python’s face recognition library along with TensorFlow, Keras, NumPy, and Matplotlib to recognize faces even when partially covered, enhancing security for masked individuals. I evaluated machine learning models for mask detection, achieving 90% accuracy with VGG19 and 80% with MobileNetV2 and ResNet50. Additionally, I implemented the MaskTheFace script to detect facial features and apply masks to images, generating multiple variations for improved training data. This project was created during the pandemic to address the increased prevalence of mask-wearing.",
+      "imageSrc": "/images/projects/acsmfr.webp",
+      "url": "https://github.com/SushruthMurakare/Masked-Face-Recognition"
+    },
+    {
+      "id": "2",
+      "title": "TODO - KinderTech robot",
+      "description": "This study explores the design and impact of a kindergarten assistant robot, TODO, created to meet classroom needs. Drawing on participatory design principles and insights from interviews with stakeholders, TODO is envisioned as a dynamic, interactive, and emotionally intelligent robot. The research focuses on two primary factors that influence the robot’s effectiveness: its personality and conversational timing. By examining how these traits shape user perceptions, the study seeks to understand the role of politeness and engagement in fostering productive human-robot interactions. Using iterative design processes, grounded theory analysis, and controlled experiments, this research lays the groundwork for developing socially responsive robots that can assist teachers and enhance the learning experience for young students.",
+      "imageSrc": "/images/projects/todo.webp",
+      "url": "https://github.com/SushruthMurakare/TODO_robot"
+    },
+    {
+      "id": "3",
+      "title": "Machine learning algorithm for crack detection",
+      "description": "Crack detection in construction materials is essential for ensuring structural safety and minimizing maintenance cost. Traditionally, methods such as manual inspection are time taking and have a room for human error thus often require specialized tools. This project proposes a machine learning based approach using Convolutional Neural Network (CNNs) to detect cracks in concrete surfaces through image analysis. Concrete was chosen as the initial materia due its widespread use. A dataset of 2GB containing labeled images of cracked and non cracked concrete was used which incorporated only real samples. The results suggest that deep learning models can effectively automate crack detection, offering a scalable alternative to manual methods.",
+      "imageSrc": "/images/projects/crackdetection.jpg",
+      "url": "https://github.com/SushruthMurakare/CrackDetection"
+    },
+    {
+      "id": "4",
+      "title": "Bad Design Competition (Won)",
+      "description": "Digi E Store is a deliberately bad-design UX/UI project that simulates a scam-like e-commerce platform to demonstrate how poor UX decisions and dark patterns frustrate users and break core design principles like Fitts’ Law, Jakob’s Law, Hick’s Law, and ethical design standards. By intentionally violating usability, accessibility, and visual hierarchy across multiple screens, the project highlights the real impact of bad interaction design. This project won the competition, recognizing its clear execution and strong understanding of UX laws by showcasing what not to do in design.",
+      "imageSrc": "/images/projects/baddesign.png",
+      "url": "https://sushruthmurakare.github.io/BadDesign/"
+    },
+    {
+      "id": "5",
+      "title": "Geospatial Data Extraction",
+      "description": "Designing and developing full stack web platform using React and Python to visualize and interact with geospatial datasets, structuring PostgreSQL database and building RESTful APIs for data processing. Extracted and organized 12 TB of geospatial data from legacy server, successfully processing 5 TB to date while implementing data migration workflows. Researched cloud platforms (AWS, GCP, Azure) and documented deployment architecture to support production hosting, storage, and scalability requirements.",
+      "imageSrc": "/images/projects/geospatial.png",
+      "url": "https://github.com/Brushy-Canyon-GIS/Web"
+    },
+    {
+      "id": "6",
+      "title": "Tactical Triangle Defense 2D",
+      "description": "This project is a rock–paper–scissors–themed tower defense game designed to be simple, intuitive, and accessible to casual players. The core gameplay revolves around strategic tower placement, where each tower and enemy belongs to a rock, paper, or scissors variant, and their effectiveness changes based on classic RPS rules. Enemies spawn in waves along a fixed path, giving players time between waves to place, upgrade, and manage defenses. The game features a clean HUD displaying player health, score, inventory, and in-game store, along with sound effects for key actions to enhance feedback. While the initial scope included multiple maps and a large variety of towers and enemies, the final implementation focused on a polished experience with 3 towers, 3 enemy types, and 1 map, emphasizing balanced mechanics, clear design, and engaging wave-based progression.",
+      "imageSrc": "/images/projects/tower.png",
+      "url": "https://drive.google.com/file/d/1kJUOdFOYLWqU1NNHg8AJWmwz2dSULIXA/view"
+    }
+  ]
