@@ -17,6 +17,7 @@ from retriever import rag_retriever
 
 from fastapi import FastAPI, HTTPException, Body
 from contextlib import asynccontextmanager 
+from fastapi.middleware.cors import CORSMiddleware
 
 
 
@@ -98,6 +99,13 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="RAG API", lifespan=lifespan)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/ask")
 async def ask_question(question: str = Body(..., embed=True)):
